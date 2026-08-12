@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubbing Studio</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/player.css">
+</head>
+<body>
+<div class="stage">
+
+  <!-- MAIN MENU -->
+  <section class="screen" id="menuScreen">
+    <div class="menu-hero">
+      <h1>🎬 Dub It</h1>
+      <p>Pick a scene. Read the line. Steal the show.</p>
+    </div>
+    <div class="card-grid" id="cardGrid"></div>
+    <div class="no-clips" id="noClips" style="display:none">No scenes are ready yet — check back soon.</div>
+  </section>
+
+  <!-- STAGE -->
+  <section class="screen" id="stageScreen" hidden>
+    <div class="sprocket" id="sprocket"></div>
+    <div class="stage-header">
+      <h2 id="clipTitle"></h2>
+      <span class="slice-count" id="sliceCounter"></span>
+    </div>
+    <div class="frame">
+      <video id="stageVideo" playsinline></video>
+      <div class="rec-badge" id="recBadge"><span class="rec-dot"></span> RECORDING</div>
+    </div>
+    <div class="subtitle-bar">
+      <span class="label">Your line</span>
+      <span id="subtitleText">—</span>
+    </div>
+    <div class="controls-row">
+      <button class="btn btn-ghost" id="playAgainBtn">▶ Play again</button>
+      <button class="btn btn-rec" id="recordBtn">● Record</button>
+      <button class="btn btn-gold" id="nextBtn" disabled>Next ▶</button>
+    </div>
+    <div class="status-line" id="statusLine">Watch the clip, then hit record when you're ready.</div>
+  </section>
+
+  <!-- PROCESSING -->
+  <section class="screen" id="processingScreen" hidden>
+    <div class="processing">
+      <div class="reel-spin">🎞️</div>
+      <h2>Mixing your voice in...</h2>
+      <p>Stitching every slice back into one scene.</p>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="resultScreen" hidden>
+    <div class="result-hero">
+      <h2>That's a wrap!</h2>
+      <p>Here's the scene — starring you.</p>
+    </div>
+    <div class="frame">
+      <video id="resultVideo" controls playsinline></video>
+    </div>
+    <div class="controls-row">
+      <a class="btn btn-gold btn-block" id="downloadBtn" download>⬇ Download video</a>
+    </div>
+    <div class="controls-row">
+      <button class="btn btn-ghost" id="replayBtn">↺ Play this scene again</button>
+      <button class="btn btn-control" id="menuBtn">🏠 Main menu</button>
+    </div>
+  </section>
+
+</div>
+<script src="/player.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubbing Studio — Admin</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+<div class="admin-shell">
+
+  <aside class="admin-side">
+    <div class="brand">
+      <span class="mark">◆</span>
+      <div>
+        <h1>Director's Room</h1>
+        <small>Admin control</small>
+      </div>
+    </div>
+    <button class="btn btn-control btn-block" id="newPartBtn">+ New Part</button>
+    <ul class="clip-list" id="clipList"></ul>
+  </aside>
+
+  <main class="admin-main">
+    <h2 id="formTitle">New Part</h2>
+    <p class="sub">Upload a movie, mark the section players will dub, split it into slices, and add a line for each one.</p>
+
+    <div class="step" id="uploadStep">
+      <div class="step-head"><div class="step-num">1</div><h3>Movie file</h3></div>
+      <div class="upload-drop" id="dropZone">
+        <div id="dropLabel">Click to choose a video file, or drag it here</div>
+        <input type="file" id="fileInput" accept="video/*" style="display:none">
+      </div>
+      <video class="preview" id="preview" controls style="display:none"></video>
+    </div>
+
+    <div class="step" id="rangeStep" style="display:none">
+      <div class="step-head"><div class="step-num">2</div><h3>Part to play</h3></div>
+      <div class="range-row">
+        <div class="field">
+          <label>Start</label>
+          <input type="text" id="clipStart" placeholder="0:00">
+        </div>
+        <div class="field">
+          <label>End</label>
+          <input type="text" id="clipEnd" placeholder="0:30">
+        </div>
+        <button class="btn btn-ghost mark-btn" id="markStart">Set start = playhead</button>
+      </div>
+      <button class="btn btn-ghost mark-btn" id="markEnd">Set end = playhead</button>
+    </div>
+
+    <div class="step" id="sliceStep" style="display:none">
+      <div class="step-head"><div class="step-num">3</div><h3>Slices &amp; lines</h3></div>
+      <div class="slice-controls">
+        <div class="field">
+          <label>Number of slices</label>
+          <input type="number" id="sliceCount" min="1" max="30" value="5">
+        </div>
+        <button class="btn btn-control" id="generateBtn">Split evenly</button>
+        <span class="mono" style="color:var(--muted); font-size:12px;">Times &amp; text below are editable after splitting</span>
+      </div>
+      <div class="slice-list" id="sliceList"></div>
+    </div>
+
+    <div class="step" id="titleStep" style="display:none">
+      <div class="step-head"><div class="step-num">4</div><h3>Name &amp; publish</h3></div>
+      <div class="field">
+        <label>Part title (shown to players)</label>
+        <input type="text" id="partTitle" placeholder="e.g. The Godfather — Offer Scene">
+      </div>
+      <div class="form-footer">
+        <button class="btn btn-danger" id="deleteBtn" style="display:none">Delete this part</button>
+        <button class="btn btn-gold" id="saveBtn">Save part</button>
+      </div>
+    </div>
+
+    <div class="empty-hint" id="emptyHint" style="display:none">Nothing here yet — click "New Part" to add your first movie clip.</div>
+  </main>
+
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="/admin.js"></script>
+</body>
+</html>
